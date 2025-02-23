@@ -1,10 +1,9 @@
 class AttendedEventsController < ApplicationController
   def create
     @attended_event = AttendedEvent.new(attended_event_params)
-    @attended_event.build_attendee(id: current_user[:id])
 
     if @attended_event.save
-      redirect_to event_show_path
+      redirect_to "events/#{params[:attended_event][:event_id]}"
     else
       redirect_to event_show_path, status: :unprocessable_entity
     end
@@ -16,6 +15,6 @@ class AttendedEventsController < ApplicationController
   private
 
   def attended_event_params
-    params.expect(attended_event: %i[event_id])
+    params.expect(attended_event: %i[event_id user_id])
   end
 end
