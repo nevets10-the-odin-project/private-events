@@ -1,1 +1,7 @@
-<h1><%= current_user.username %>'s account page</h1>
+<h1>Account Page</h1>
+<h3><%= current_user.username %>'s events</h3>
+<ul>
+    <% @user.events.each do |event| %>
+    <li><%= event.name %>, <%= event.location %>, <%= event.date %></li>
+    <% end %>
+</ul>
