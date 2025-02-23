@@ -8,3 +8,7 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+nav {
+	display: flex;
+	gap: 0.5rem;
+}
