@@ -1,1 +1,4 @@
 <h1>Event List</h1>
+<% if user_signed_in? %>
+    <%= link_to 'Add new event', new_event_path %>
+<% end %>
