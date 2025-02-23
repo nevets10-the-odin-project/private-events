@@ -16,7 +16,7 @@ A user can create events. A user can attend many events. An event can be attende
 ## Pre-project DB Spec
 
 users
-    has_many :events, foreign_key: "host_id", dependent: :destroy
+    has_many :events, foreign_key: "creator_id", dependent: :destroy
     has_many :events, through: invites, foreign_key: "invitee_id"
 
     username: string
@@ -24,7 +24,7 @@ users
     email: string
     
 events
-    belongs_to :host, class_name: "User"
+    belongs_to :creator, class_name: "User"
     has_many :users, through: invites, foreign_key: "invitee_id"
 
     location: string
