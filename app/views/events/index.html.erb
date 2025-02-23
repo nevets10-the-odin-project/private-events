@@ -5,8 +5,6 @@
 
 <ul>
     <% @events.each do |event| %>
-        <li>
-            <%= event.event_date %> - <%= event.name %> - <%= event.location %>
-        </li>
+        <li><%= link_to event.name, event %></li>
     <% end %>
 </ul>
