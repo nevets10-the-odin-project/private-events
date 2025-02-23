@@ -2,3 +2,11 @@
 <% if user_signed_in? %>
     <%= link_to 'Add new event', new_event_path %>
 <% end %>
+
+<ul>
+    <% @events.each do |event| %>
+        <li>
+            <%= event.event_date %> - <%= event.name %> - <%= event.location %>
+        </li>
+    <% end %>
+</ul>
