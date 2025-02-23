@@ -2,4 +2,6 @@
 <span>Date: <%= @event.event_date %> |</span>
 <span>Location: <%= @event.location %> |</span>
 <span>Creator: <%= @creator.username %></span>
-<p></p>
+<% if user_logged_in? %>
+    <%= button_to 'Attend Event', "/attended_events/#{@event.id}", method: :post %>
+<% end %>
