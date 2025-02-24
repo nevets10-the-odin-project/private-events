@@ -15,12 +15,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_220318) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "attended_events", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "event_id", null: false
+    t.bigint "attendee_id", null: false
+    t.bigint "attended_event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_attended_events_on_event_id"
-    t.index ["user_id"], name: "index_attended_events_on_user_id"
+    t.index ["attended_event_id"], name: "index_attended_events_on_attended_event_id"
+    t.index ["attendee_id"], name: "index_attended_events_on_attendee_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -47,7 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_220318) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "attended_events", "events"
-  add_foreign_key "attended_events", "users"
+  add_foreign_key "attended_events", "events", column: "attended_event_id"
+  add_foreign_key "attended_events", "users", column: "attendee_id"
   add_foreign_key "events", "users"
 end

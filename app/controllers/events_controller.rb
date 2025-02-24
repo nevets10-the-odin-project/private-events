@@ -10,8 +10,8 @@ class EventsController < ApplicationController
     @creator = User.find(@event.user_id)
 
     @attended_event = AttendedEvent.new
-    @attended_event.build_event(id: @event[:id])
-    @attended_event.build_user(id: current_user[:id])
+    @attended_event.build_attended_event(id: @event[:id])
+    @attended_event.build_attendee(id: current_user[:id])
   end
 
   def new

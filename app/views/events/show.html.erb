@@ -2,10 +2,17 @@
 <span>Date: <%= @event.event_date %> |</span>
 <span>Location: <%= @event.location %> |</span>
 <span>Creator: <%= @creator.username %></span>
+
+<ul>
+    <% @event.attendees.each do |attendee| %>
+        <li><%= attendee.username %></li>
+    <% end %>
+</ul>
+
 <% if user_signed_in? %>
     <%= form_with model: @attended_event do |form| %>
-        <%= form.hidden_field :event_id %>
-        <%= form.hidden_field :user_id %>
+        <%= form.hidden_field :attended_event_id %>
+        <%= form.hidden_field :attendee_id %>
         <%= form.submit 'Attend Event' %>
     <% end %>
 <% end %>
