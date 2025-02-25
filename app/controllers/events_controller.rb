@@ -11,9 +11,13 @@ class EventsController < ApplicationController
 
     return unless user_signed_in?
 
-    @attended_event = AttendedEvent.new
-    @attended_event.build_attended_event(id: @event[:id])
-    @attended_event.build_attendee(id: current_user[:id])
+    if @event.attendees.include?(current_user)
+      @attended_event = AttendedEvent.where(attendee_id: current_user[:id], attended_event_id: @event.id).first
+    else
+      @attended_event = AttendedEvent.new
+      @attended_event.build_attended_event(id: @event[:id])
+      @attended_event.build_attendee(id: current_user[:id])
+    end
   end
 
   def new

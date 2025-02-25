@@ -10,6 +10,10 @@ class AttendedEventsController < ApplicationController
   end
 
   def destroy
+    @attended_event = AttendedEvent.find(params.expect(:id))
+    @attended_event.destroy!
+
+    redirect_back_or_to root_path
   end
 
   private
