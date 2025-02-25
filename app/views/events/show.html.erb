@@ -10,9 +10,17 @@
 </ul>
 
 <% if user_signed_in? %>
-    <%= form_with model: @attended_event do |form| %>
-        <%= form.hidden_field :attended_event_id %>
-        <%= form.hidden_field :attendee_id %>
-        <%= form.submit 'Attend Event' %>
+    <% if @event.attendees.include?(current_user) %>
+        <%= form_with model: @attended_event, method: :delete do |form| %>
+            <%= form.hidden_field :attended_event_id %>
+            <%= form.hidden_field :attendee_id %>
+            <%= form.submit 'Unattend Event' %>
+        <% end %>
+    <% else %>
+        <%= form_with model: @attended_event do |form| %>
+            <%= form.hidden_field :attended_event_id %>
+            <%= form.hidden_field :attendee_id %>
+            <%= form.submit 'Attend Event' %>
+        <% end %>
     <% end %>
 <% end %>

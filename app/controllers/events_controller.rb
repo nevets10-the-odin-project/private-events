@@ -9,6 +9,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @creator = User.find(@event.user_id)
 
+    return unless user_signed_in?
+
     @attended_event = AttendedEvent.new
     @attended_event.build_attended_event(id: @event[:id])
     @attended_event.build_attendee(id: current_user[:id])
