@@ -1,14 +1,10 @@
 <h1><%= @event.name %></h1>
-<span>Date: <%= @event.event_date %> |</span>
-<span>Location: <%= @event.location %> |</span>
-<span>Creator: <%= @creator.username %></span>
-
-<ul>
-    <% @event.attendees.each do |attendee| %>
-        <li><%= attendee.username %></li>
-    <% end %>
-</ul>
-
+<div>
+    <span>Date: <%= @event.event_date %> |</span>
+    <span>Location: <%= @event.location %> |</span>
+    <span>Creator: <%= @creator.username %></span>
+</div>
+<br>
 <% if user_signed_in? %>
     <% if @event.attendees.include?(current_user) %>
         <%= form_with model: @attended_event, method: :delete do |form| %>
@@ -24,3 +20,8 @@
         <% end %>
     <% end %>
 <% end %>
+<ul>
+    <% @event.attendees.each do |attendee| %>
+        <li><%= attendee.username %></li>
+    <% end %>
+</ul>
