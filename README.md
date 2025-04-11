@@ -14,7 +14,7 @@ This project will require you to model many-to-many relationships and also to be
 
 This project handled a lot of front-loaded information on Active Record, so it was a little difficult to do at first. I'm not sure if my years of experience with PL/SQL is making this harder; I just want to write the select statement and be done with it. Eventually, I got everything working, mostly. The hardest part was getting the join table working. It took me a long time to connect the dots in declaring the association with both the other related record (attendee and event) AND the join table itself.
 
-Rant: Join tables shouldn't be called join tables because if I search 'join tables' all I'll get are results for sql statements.
+Rant: Join tables shouldn't be called join tables because if I search 'join tables' all I'll get are results for sql statements. It's also not compeltely consistent - Some resources call them 'through tables' or something else.
 
 ## Pre-project DB Spec
 
